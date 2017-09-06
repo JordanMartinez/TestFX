@@ -68,6 +68,8 @@ rootProject.with { project ->
         javaVendor = System.properties["java.vendor"]
         javaVmVersion = System.properties["java.vm.version"]
 
+        javadocFooter = "Copyright &copy; 2013-${buildDate[0..3]} The TestFX Contributors. All rights reserved."
+
         usingJava9 = javaVersion.startsWith("9")
         javaSourceAndTargetCompilation = usingJava9 ? "9" : "1.8"
 
@@ -227,7 +229,7 @@ subprojects { subproject ->
         options.version     = subproject.sourceCompatibility
         options.windowTitle = "${subproject.pomDescription} ${version} API"
         options.docTitle    = "${subproject.pomDescription} ${version} API"
-        options.footer      = project.javadocFooter
+        options.footer      = javadocFooter
         options.links = javadocLinks
     }
 }
